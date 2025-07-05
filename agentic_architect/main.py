@@ -1,0 +1,35 @@
+import argparse
+from typing import List
+
+from .config import Config
+from .llm_connectors import connector_from_config
+from .agents.architecture_agent import ArchitectureAgent
+from .agents.review_agent import ReviewAgent
+
+
+def run(requirements: List[str], config_path: str) -> None:
+    cfg = Config.load(config_path)
+    llm = connector_from_config(cfg.llm)
+
+    arch_agent = ArchitectureAgent(llm)
+    architecture = arch_agent.generate_architecture(requirements)
+    print("--- Proposed Architecture ---")
+    print(architecture)
+
+    if cfg.review_enabled:
+        review_agent = ReviewAgent(llm)
+        review = review_agent.review(architecture)
+        print("\n--- Review ---")
+        print(review)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate banking architectures via LLM agents")
+    parser.add_argument("config", help="Path to YAML configuration file")
+    parser.add_argument("requirements", nargs='+', help="List of requirement statements")
+    args = parser.parse_args()
+
+    run(args.requirements, args.config)
+
+if __name__ == "__main__":
+    main()
