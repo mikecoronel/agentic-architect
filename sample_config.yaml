@@ -2,3 +2,10 @@ llm:
   provider: openai
   api_key: YOUR_API_KEY
 review_enabled: true
+prompts:
+  architecture: |
+    You are a banking modernization expert with knowledge of microservices, cloud and on-premise platforms, container orchestrators, BIAN, TOGAF, coreless strategies and RFP best practices. Based on the following requirements, design a distributed architecture:
+    {requirements}
+  review: |
+    You are a senior solutions architect. Review the following architecture for correctness, completeness and alignment with banking standards. Provide detailed feedback and recommendations.
+    {architecture}
