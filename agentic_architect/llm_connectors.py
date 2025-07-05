@@ -50,7 +50,7 @@ class GeminiConnector(LLMConnector):
         self.genai = genai
 
     def generate(self, prompt: str) -> str:
-        model = self.genai.GenerativeModel("gemini-pro")
+        model = self.genai.GenerativeModel("models/gemini-2.5-flash")
         response = model.generate_content(prompt)
         return response.text
 
