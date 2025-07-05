@@ -4,7 +4,9 @@ This repository provides a simple multi-agent system for generating banking
 architecture proposals with the help of different large language models (LLMs).
 It can connect to OpenAI, Anthropic, Google's Gemini and local models via
 Ollama. The system can be configured through a YAML file and optionally uses a
-second agent to review the generated architecture.
+second agent to review the generated architecture. Prompts for the agents
+can be customized in the configuration file and the tool logs key steps
+for traceability.
 
 ## Features
 
@@ -22,7 +24,9 @@ second agent to review the generated architecture.
    ```bash
    pip install openai PyYAML
    ```
-2. Create a configuration file (see `sample_config.yaml`).
+2. Create a configuration file (see `sample_config.yaml`). The file
+   lets you specify API keys and customize the prompts used by the
+   agents.
 3. Run the tool:
    ```bash
    python -m agentic_architect.main config.yaml "Requirement 1" "Requirement 2"
