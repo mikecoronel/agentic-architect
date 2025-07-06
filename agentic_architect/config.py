@@ -1,12 +1,13 @@
 import yaml
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Optional, Dict
 
 @dataclass
 class LLMConfig:
     provider: str
     api_key: Optional[str] = None
     base_url: Optional[str] = None
+    costs: Dict[str, float] = field(default_factory=dict)
 
 
 @dataclass
@@ -34,7 +35,13 @@ class Config:
         with open(path, 'r') as f:
             data = yaml.safe_load(f) or {}
 
-        llm = LLMConfig(**data.get('llm', {}))
+        llm_data = data.get('llm', {})
+        llm = LLMConfig(
+            provider=llm_data.get('provider'),
+            api_key=llm_data.get('api_key'),
+            base_url=llm_data.get('base_url'),
+            costs=llm_data.get('costs', {}),
+        )
         prompts = PromptConfig(**data.get('prompts', {}))
 
         return Config(

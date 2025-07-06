@@ -25,12 +25,16 @@ for traceability.
    pip install openai PyYAML
    ```
 2. Create a configuration file (see `sample_config.yaml`). The file
-   lets you specify API keys and customize the prompts used by the
-  agents. Token usage and estimated cost are logged for each LLM request,
-  providing visibility into consumption.
+   lets you specify API keys, per-million token pricing and customize
+   the prompts used by the agents. Token usage and estimated cost are
+   logged for each LLM request, providing visibility into consumption.
 
-  Logging is configured at startup, producing messages such as:
-   `2025-07-06 14:12:03 [INFO] agentic_architect.llm_connectors: Tokens used - input: 150, output: 220, total: 370, cost: $0.0200`.
+   Logging is configured at startup, producing messages such as:
+   ```
+   2025-07-06 14:12:03 [INFO] agentic_architect.llm_connectors: Input tokens: 150, cost: $0.004500
+   2025-07-06 14:12:03 [INFO] agentic_architect.llm_connectors: Output tokens: 220, cost: $0.013200
+   2025-07-06 14:12:03 [INFO] agentic_architect.llm_connectors: Total tokens: 370, cost: $0.017700
+   ```
 
 3. Run the tool:
    ```bash

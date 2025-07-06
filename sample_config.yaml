@@ -1,6 +1,9 @@
 llm:
   provider: gemini
   api_key: REMOVED_API_KEY
+  costs:
+    input: 0.03
+    output: 0.06
 review_enabled: true
 
 prompts:

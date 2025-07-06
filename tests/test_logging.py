@@ -14,4 +14,6 @@ def test_usage_logging(caplog):
     prompts = PromptConfig()
     agent = ArchitectureAgent(connector, prompts)
     agent.generate_architecture(["requirement"])
-    assert any("Tokens used" in rec.message for rec in caplog.records)
+    assert any("Input tokens" in rec.message for rec in caplog.records)
+    assert any("Output tokens" in rec.message for rec in caplog.records)
+    assert any("Total tokens" in rec.message for rec in caplog.records)
