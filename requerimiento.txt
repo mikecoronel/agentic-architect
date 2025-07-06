@@ -1,0 +1,139 @@
+# USER PROMPT: BANKING ARCHITECTURE RFP PROPOSAL
+
+## TASK
+I need you to create a comprehensive RFP response for a banking architecture transformation project. The proposal must demonstrate our consulting firm's methodology for enterprise architecture using TOGAF ADM framework, BIAN domain mapping, and business capability analysis.
+
+## CONTEXT
+
+### Project Background
+**Client:** Regional Bank (Tier 2) seeking digital transformation
+**Challenge:** Legacy core banking system modernization with regulatory compliance
+**Timeline:** 18-month implementation with phased delivery
+**Budget:** $15-20M total project value
+**Scope:** Core banking, digital channels, payment processing, risk management
+
+### RFP Requirements
+The bank is requesting:
+1. Business capability assessment and heat mapping
+2. Process architecture analysis (L2/L3 level)
+3. BIAN domain mapping and service domain identification
+4. Technology capability analysis and gap assessment
+5. Target state architecture design (business + technology)
+6. Implementation roadmap with risk mitigation
+
+### Our Consulting Methodology Context
+Our firm specializes in banking transformations using:
+- **TOGAF 9.2 ADM** as primary architecture framework
+- **BIAN Service Landscape** for banking domain standardization
+- **Business Process Hierarchy** (L0→L1→L2→L3) analysis
+- **Capability-Based Planning** for transformation prioritization
+- **Cloud-native** target state architectures
+
+## REFERENCES
+
+### TOGAF ADM Phases to Include
+- **Phase A:** Architecture Vision and stakeholder alignment
+- **Phase B:** Business Architecture with capability modeling
+- **Phase C:** Information Systems Architecture (applications + data)
+- **Phase D:** Technology Architecture and infrastructure design
+- **Phase E-H:** Implementation planning and governance
+
+### BIAN Domains to Address
+- **Customer Management:** Customer lifecycle, onboarding, KYC
+- **Product Management:** Product design, pricing, lifecycle
+- **Channel Management:** Digital channels, omnichannel experience
+- **Operations Management:** Transaction processing, settlement
+- **Risk & Compliance:** Credit risk, operational risk, regulatory reporting
+
+### Key Deliverables Expected
+1. **Current State Assessment:** AS-IS architecture documentation
+2. **Business Capability Heat Map:** Maturity and priority analysis
+3. **Process Architecture:** L2/L3 process maps with BIAN alignment
+4. **Gap Analysis:** Current vs target state differences
+5. **Target Architecture:** TO-BE business and technology blueprints
+6. **Transformation Roadmap:** Phased implementation with timelines
+7. **Risk Assessment:** Technical, business, and regulatory risks
+
+## EVALUATE
+
+### Success Criteria for the Proposal
+The RFP response should demonstrate:
+- [ ] **Methodology Clarity:** Clear explanation of our TOGAF+BIAN approach
+- [ ] **Banking Expertise:** Deep understanding of banking processes and regulations
+- [ ] **Technical Depth:** Specific technology recommendations and patterns
+- [ ] **Risk Mitigation:** Comprehensive risk identification and mitigation strategies
+- [ ] **Implementation Realism:** Achievable timelines with realistic resource allocation
+- [ ] **Value Proposition:** Clear business benefits and ROI justification
+
+### Competitive Differentiation
+Our proposal must highlight:
+- Proven track record with similar banking transformations
+- Proprietary methodology combining TOGAF+BIAN+Capability modeling
+- Specific experience with regulatory compliance (Basel III, PSD2)
+- Cloud-native architecture expertise
+- Agile delivery methodology with DevSecOps integration
+
+## ITERATE
+
+### Proposal Structure Requested
+Please create the RFP response with these sections:
+
+1. **Executive Summary** (2 pages)
+   - Project understanding and value proposition
+   - High-level approach and key differentiators
+
+2. **Methodology Overview** (4 pages)
+   - TOGAF ADM adaptation for banking
+   - BIAN domain mapping approach
+   - Process analysis methodology (L2/L3)
+   - Capability assessment framework
+
+3. **Technical Approach** (6 pages)
+   - Current state assessment strategy
+   - Business architecture development
+   - Technology architecture design
+   - Gap analysis and roadmap creation
+
+4. **Implementation Plan** (4 pages)
+   - Phased delivery approach
+   - Timeline and milestones
+   - Team structure and governance
+   - Risk management strategy
+
+5. **Case Studies** (2 pages)
+   - Similar banking transformation examples
+   - Quantified results and lessons learned
+
+### Specific Outputs Needed
+For each section, include:
+- **Detailed work breakdown** with specific activities
+- **RACI matrices** for key stakeholders
+- **Deliverable templates** showing expected outputs
+- **Success metrics** and acceptance criteria
+- **Risk mitigation** strategies for identified challenges
+
+### Quality Standards
+Ensure the proposal demonstrates:
+- **Regulatory Knowledge:** Basel III, PSD2, AML/KYC compliance
+- **Technology Currency:** Cloud-native, microservices, API-first
+- **Banking Domain Expertise:** Core banking, payments, risk management
+- **Proven Methodologies:** TOGAF, BIAN, Agile, DevSecOps
+
+---
+
+**SPECIFIC REQUEST:**
+Create this RFP response as if you're our senior solutions architect preparing a winning proposal that showcases our firm's expertise in banking architecture transformations. Focus on demonstrating deep methodology knowledge while maintaining practical, implementable recommendations.
+
+**OUTPUT FORMAT:**
+Please structure as a professional consulting proposal with:
+- Executive tone appropriate for C-level banking executives
+- Technical depth sufficient for IT leadership review
+- Clear methodology explanation for procurement teams
+- Specific deliverables and timelines for project managers
+
+**ITERATION GUIDANCE:**
+After you provide the initial proposal, I may ask you to:
+- Adjust technical depth for specific sections
+- Add more detail on regulatory compliance aspects
+- Expand on specific BIAN domain mappings
+- Refine implementation timelines based on feedback

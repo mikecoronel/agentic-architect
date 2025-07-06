@@ -1,0 +1,15 @@
+# Core
+PyYAML>=6.0                 # para parsear el YAML de configuración
+openai>=0.27.0              # conector OpenAI
+anthropic>=0.4.0            # conector Anthropic (Claude)
+google-generativeai>=0.1.0  # conector Gemini (Vertex AI)
+requests>=2.28.0            # para llamadas HTTP genéricas (OllamaConnector, ListModels, etc.)
+
+# Opcional (mejora el conteo de tokens con tiktoken)
+tiktoken>=0.6.2
+
+# Dev (si quieres ejecutar tests o formatear)
+ pytest>=7.0.0
+ pydantic>=2.0
+ black>=23.1.0
+
