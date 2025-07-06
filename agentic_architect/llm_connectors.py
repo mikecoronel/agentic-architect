@@ -29,6 +29,7 @@ def _log_usage(prompt_tokens: int, completion_tokens: int, input_cost: float, ou
         cost,
     )
 
+
 class LLMConnector(abc.ABC):
     """Abstract interface for connecting to various LLM providers."""
 
