@@ -1,5 +1,9 @@
 import abc
+import logging
 from typing import Any
+
+logger = logging.getLogger(__name__)
+
 
 class LLMConnector(abc.ABC):
     """Abstract interface for connecting to various LLM providers."""
@@ -19,6 +23,8 @@ class OpenAIConnector(LLMConnector):
         self.openai.base_url = base_url
 
     def generate(self, prompt: str) -> str:
+        logger.info("OpenAI request")
+        logger.debug("Prompt: %s", prompt)
         response = self.openai.ChatCompletion.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
@@ -34,6 +40,8 @@ class AnthropicConnector(LLMConnector):
         self.client = anthropic.Client(api_key, base_url=base_url)
 
     def generate(self, prompt: str) -> str:
+        logger.info("Anthropic request")
+        logger.debug("Prompt: %s", prompt)
         response = self.client.completions.create(
             model="claude-3-opus-20240229",
             prompt=prompt,
@@ -50,7 +58,9 @@ class GeminiConnector(LLMConnector):
         self.genai = genai
 
     def generate(self, prompt: str) -> str:
-        model = self.genai.GenerativeModel("gemini-pro")
+        logger.info("Gemini request")
+        logger.debug("Prompt: %s", prompt)
+        model = self.genai.GenerativeModel("models/gemini-2.5-flash")
         response = model.generate_content(prompt)
         return response.text
 
@@ -64,17 +74,27 @@ class OllamaConnector(LLMConnector):
         self.base_url = base_url
 
     def generate(self, prompt: str) -> str:
-        response = self.ollama.chat(model="llama2", messages=[{"role": "user", "content": prompt}], base_url=self.base_url)
+        logger.info("Ollama request")
+        logger.debug("Prompt: %s", prompt)
+        response = self.ollama.chat(
+            model="llama2",
+            messages=[{"role": "user", "content": prompt}],
+            base_url=self.base_url,
+        )
         return response["message"]["content"]
 
 def connector_from_config(cfg: Any) -> LLMConnector:
     provider = cfg.provider.lower()
     if provider == "openai":
+        logger.info("Using OpenAI connector")
         return OpenAIConnector(api_key=cfg.api_key, base_url=cfg.base_url or "https://api.openai.com/v1")
     if provider == "anthropic":
+        logger.info("Using Anthropic connector")
         return AnthropicConnector(api_key=cfg.api_key, base_url=cfg.base_url or "https://api.anthropic.com")
     if provider == "gemini":
+        logger.info("Using Gemini connector")
         return GeminiConnector(api_key=cfg.api_key)
     if provider == "ollama":
+        logger.info("Using Ollama connector")
         return OllamaConnector(base_url=cfg.base_url or "http://localhost:11434")
     raise ValueError(f"Unknown provider {cfg.provider}")
