@@ -21,6 +21,7 @@ def run(requirements: List[str], config_path: str) -> None:
 
     arch_agent = ArchitectureAgent(llm, cfg.prompts)
     logger.info("Generating architecture for %d requirements", len(requirements))
+
     architecture = arch_agent.generate_architecture(requirements)
     print("--- Proposed Architecture ---")
     print(architecture)
@@ -28,6 +29,7 @@ def run(requirements: List[str], config_path: str) -> None:
     if cfg.review_enabled:
         review_agent = ReviewAgent(llm, cfg.prompts)
         logger.info("Running review agent")
+
         review = review_agent.review(architecture)
         print("\n--- Review ---")
         print(review)
