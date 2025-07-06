@@ -28,6 +28,7 @@ for traceability.
    lets you specify API keys and customize the prompts used by the
   agents. Token usage and estimated cost are logged for each LLM request,
   providing visibility into consumption.
+
 3. Run the tool:
    ```bash
    python -m agentic_architect.main config.yaml "Requirement 1" "Requirement 2"
