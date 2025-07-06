@@ -28,8 +28,10 @@ for traceability.
    lets you specify API keys and customize the prompts used by the
   agents. Token usage and estimated cost are logged for each LLM request,
   providing visibility into consumption.
-   Logging is configured at startup, producing messages such as:
+  
+  Logging is configured at startup, producing messages such as:
    `2025-07-06 14:12:03 [INFO] agentic_architect.llm_connectors: Tokens used - input: 150, output: 220, total: 370, cost: $0.0200`.
+
 3. Run the tool:
    ```bash
    python -m agentic_architect.main config.yaml "Requirement 1" "Requirement 2"
