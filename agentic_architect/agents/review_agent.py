@@ -16,4 +16,5 @@ class ReviewAgent:
         prompt = self.prompts.review.format(architecture=architecture)
         logger.info("Reviewing architecture")
         logger.debug("Review prompt: %s", prompt)
+
         return self.llm.generate(prompt)
