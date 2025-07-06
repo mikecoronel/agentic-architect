@@ -8,11 +8,16 @@ from .agents.architecture_agent import ArchitectureAgent
 from .agents.review_agent import ReviewAgent
 
 
-def run(requirements: List[str], config_path: str) -> None:
+def configure_logging() -> None:
+    """Configure root logging for the CLI."""
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
     )
+
+
+def run(requirements: List[str], config_path: str) -> None:
     logger = logging.getLogger(__name__)
 
     cfg = Config.load(config_path)
@@ -41,6 +46,7 @@ def main() -> None:
     parser.add_argument("requirements", nargs='+', help="List of requirement statements")
     args = parser.parse_args()
 
+    configure_logging()
     run(args.requirements, args.config)
 
 if __name__ == "__main__":
