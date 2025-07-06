@@ -21,6 +21,12 @@ def run(requirements: List[str], config_path: str) -> None:
 
     arch_agent = ArchitectureAgent(llm, cfg.prompts)
     logger.info("Generating architecture for %d requirements", len(requirements))
+    cfg = Config.load(config_path)
+    logger.info("Configuration loaded from %s", config_path)
+    llm = connector_from_config(cfg.llm)
+
+    arch_agent = ArchitectureAgent(llm, cfg.prompts)
+    logger.info("Generating architecture for %d requirements", len(requirements))
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
