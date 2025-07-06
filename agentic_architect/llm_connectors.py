@@ -50,6 +50,7 @@ class OpenAIConnector(LLMConnector):
     def generate(self, prompt: str) -> str:
         logger.info("OpenAI request")
         logger.debug("Prompt: %s", prompt)
+
         response = self.openai.ChatCompletion.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
@@ -72,6 +73,7 @@ class AnthropicConnector(LLMConnector):
     def generate(self, prompt: str) -> str:
         logger.info("Anthropic request")
         logger.debug("Prompt: %s", prompt)
+
         response = self.client.completions.create(
             model="claude-3-opus-20240229",
             prompt=prompt,
@@ -103,6 +105,7 @@ class GeminiConnector(LLMConnector):
     def generate(self, prompt: str) -> str:
         logger.info("Gemini request")
         logger.debug("Prompt: %s", prompt)
+
         model = self.genai.GenerativeModel("models/gemini-2.5-flash")
         response = model.generate_content(prompt)
         content = response.text
@@ -123,6 +126,7 @@ class OllamaConnector(LLMConnector):
     def generate(self, prompt: str) -> str:
         logger.info("Ollama request")
         logger.debug("Prompt: %s", prompt)
+
         response = self.ollama.chat(
             model="llama2",
             messages=[{"role": "user", "content": prompt}],
