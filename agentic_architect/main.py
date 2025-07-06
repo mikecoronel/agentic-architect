@@ -16,16 +16,16 @@ def configure_logging() -> None:
     )
 
 
-def run(config_path: str) -> None:
+def run(config_path: str, req_path: str = "requerimientos.txt") -> None:
     logger = logging.getLogger(__name__)
 
     cfg = Config.load(config_path)
     logger.info("Configuration loaded from %s", config_path)
 
-    with open("requerimiento.txt", "r") as f:
+    with open(req_path, "r") as f:
         requirements = [line.strip() for line in f if line.strip()]
 
-    print(requirements)
+    logger.info("Loaded %d requirements from %s", len(requirements), req_path)
 
     llm = connector_from_config(cfg.llm)
 
@@ -41,17 +41,23 @@ def run(config_path: str) -> None:
         logger.info("Running review agent")
 
         review = review_agent.review(architecture)
-        print("\n--- Review ---")
+        print("\n=== Review Report ===")
         print(review)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate banking architectures via LLM agents")
     parser.add_argument("config", help="Path to YAML configuration file")
+    parser.add_argument(
+        "requirements",
+        nargs="?",
+        default="requerimientos.txt",
+        help="Path to requirements file",
+    )
     args = parser.parse_args()
 
     configure_logging()
-    run(args.config)
+    run(args.config, args.requirements)
 
 if __name__ == "__main__":
     main()

@@ -42,6 +42,6 @@ def test_run_invokes_review(monkeypatch, capsys):
     open_orig = open
     monkeypatch.setattr("builtins.open", fake_open)
 
-    run("config.yaml")
+    run("config.yaml", "requerimiento.txt")
 
     assert call_order == ["arch", "review"]
