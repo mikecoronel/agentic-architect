@@ -32,6 +32,16 @@ def test_run_invokes_review(monkeypatch, capsys):
     monkeypatch.setattr("agentic_architect.main.ArchitectureAgent.generate_architecture", fake_generate)
     monkeypatch.setattr("agentic_architect.main.ReviewAgent.review", fake_review)
 
-    run(["req"], "config.yaml")
+    from io import StringIO
+
+    def fake_open(path, *args, **kwargs):
+        if path == "requerimiento.txt":
+            return StringIO("req1\nreq2\n")
+        return open_orig(path, *args, **kwargs)
+
+    open_orig = open
+    monkeypatch.setattr("builtins.open", fake_open)
+
+    run("config.yaml")
 
     assert call_order == ["arch", "review"]

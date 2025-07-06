@@ -1,6 +1,5 @@
 import argparse
 import logging
-from typing import List
 
 from .config import Config
 from .llm_connectors import connector_from_config
@@ -17,11 +16,17 @@ def configure_logging() -> None:
     )
 
 
-def run(requirements: List[str], config_path: str) -> None:
+def run(config_path: str) -> None:
     logger = logging.getLogger(__name__)
 
     cfg = Config.load(config_path)
     logger.info("Configuration loaded from %s", config_path)
+
+    with open("requerimiento.txt", "r") as f:
+        requirements = [line.strip() for line in f if line.strip()]
+
+    print(requirements)
+
     llm = connector_from_config(cfg.llm)
 
     arch_agent = ArchitectureAgent(llm, cfg.prompts)
@@ -43,11 +48,10 @@ def run(requirements: List[str], config_path: str) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate banking architectures via LLM agents")
     parser.add_argument("config", help="Path to YAML configuration file")
-    parser.add_argument("requirements", nargs='+', help="List of requirement statements")
     args = parser.parse_args()
 
     configure_logging()
-    run(args.requirements, args.config)
+    run(args.config)
 
 if __name__ == "__main__":
     main()
