@@ -2,8 +2,8 @@ llm:
   provider: gemini
   api_key: GEMINI_API_KEY
   costs:
-    input: 0.03
-    output: 0.06
+    input: 0.15
+    output: 0.60
 review_enabled: true
 
 prompts:
