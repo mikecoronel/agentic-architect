@@ -15,6 +15,8 @@ for traceability.
   BIAN, TOGAF and coreless strategies.
 - **ReviewAgent** – optionally reviews the generated architecture for accuracy
   and completeness.
+- **MarkdownAnalysisAgent** – loads large Markdown documents and processes them
+  with chain-of-thought prompts.
 - Support for multiple LLM providers (OpenAI, Anthropic, Gemini, Ollama).
 - Simple CLI for providing requirements and configuration.
 
@@ -42,3 +44,20 @@ for traceability.
    ```
 
 The tool prints the proposed architecture and the review if enabled.
+
+To analyze a large Markdown document with your own prompt:
+
+```python
+from agentic_architect.agents.markdown_agent import MarkdownAnalysisAgent
+from agentic_architect.llm_connectors import OpenAIConnector
+
+connector = OpenAIConnector(api_key="YOUR_KEY")
+agent = MarkdownAnalysisAgent(connector)
+# analyze a file using chain-of-thought
+result = agent.analyze("Summarize the document", path="document.md")
+print(result)
+
+# you can also call the agent without a file
+reply = agent.analyze("What is the capital of France?")
+print(reply)
+```
